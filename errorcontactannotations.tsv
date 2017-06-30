@@ -1,0 +1,14 @@
+Start frame	End frame	Category	Status	Comments
+405	490	Levering up	New	Grasping Zone: levering up
+495	530	Rotate to remove one edge	New	Grasping Zone: use contact guidance(?) to get one edge out first before the second (rotation)
+739	750	Collision (error)	New	Placing Zone: pressed bar into side of box, but it wouldn't go in
+750	772	Contact-guided recovery	New	Placing Zone: recovering from error
+788	835	Levering down	New	Placing Zone: lever rest of bar down
+7575	7608	Shaking to singulate	New	Grabbing Pepsi cup
+11095	11170	Miss / contact guidance	New	Grabbing fork: misses fork, using touch to recover
+17270	17296	Collision (error) / contact guidance	New	Grabbing pizza box: finger makes contact with neighboring box but finds crack using touch (or by just applying force)
+17296	17312	Push	New	Grabbing pizza box: finger pushes box to edge
+17312	17360	Levering up	New	
+17367	17380	Controlled dropping	New	
+17380	17410	Levering up	New	
+17440	17470	Levering up	New	

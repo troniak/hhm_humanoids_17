@@ -1,0 +1,63 @@
+Start Frame	End Frame	Category	Status	Comments
+340	360	NC M NW (Approach)	In taxonomy	Zone bar: approach w/o preshaping
+360	399	NC M W (Pre-shaping)	In taxonomy	Preshaping
+402	448	C NP M W A	In taxonomy	Levering up bar
+469	492	NC M W + C P M NW NA (Regrasp)	New	Regrasp
+492	550	C P M NW NA (Grasp)	In taxonomy	Removing Zone with stable grasp
+550	572	C P M W NA	In taxonomy	Rotating bar slightly to get it out
+572	647	C P M NW NA (Grasp)	In taxonomy	Removing Zone with stable grasp
+650	790	C P M NW NA (Grasp)	In taxonomy	Rotating bar while moving it in (outside-hand movement?)
+790	835	C NP M W NA	In taxonomy	Releasing bar (levering down?)
+840	870	NC M W (Post-shaping)	In taxonomy	Hand retreating
+1848	1881	NC M W (Pre-shaping)	In taxonomy	Mdew: preshaping
+1881	1920	NC M W + C NP NM NA (Compliant contact)	New	Pinky/ring already contacted bottle while others are still grasping
+1920	1955	C P M W NA	In taxonomy	Moving bottle while also making adjustments of contact points
+1955	1965	C P M NW NA (Grasp)	In taxonomy	Moving bottle out
+1965	1986	NC M W + C P M NW NA (Regrasp)	New	Thumb and index adjust (regrasp) for some reason
+1986	2030	C P M NW NA (Grasp)	In taxonomy	Moving bottle out
+6640	6730	C P M NW NA (Grasp)	In taxonomy	Moving milk bottle in; hand pose not changing
+6730	6740	C NP M W NA	In taxonomy	Ungrasping milk bottle
+6740	6786	NC M W (Post-shaping)	In taxonomy	Release milk bottle by opening hands
+7475	7515	NC M W (Pre-shaping)	In taxonomy	Pepsi: preshaping
+7517	7639	C P M NW NA (Grasp)	In taxonomy	Shaking cup while lifting
+10685	10715	NC M W (Pre-shaping)	In taxonomy	Preshaping
+10715	10730	C NP M W A	In taxonomy	Forming grasp
+10730	10770	C P M W NA	In taxonomy	Moving spoon out and rotating
+10770	10800	3+14 (Regrasp)	New	Spoon pinched between 1-3; 4-5 opening up to regrasp spoon
+10800	10820	C P M W A	In taxonomy	Spoon rotated and grasped between 1-4 and palm now
+10820	10850	3+14 (Regrasp)	New	Pinch maintained between 1-2; 3-5 regrasping
+10850	10870	C P M W A	In taxonomy	Rotating spoon with fingers (by moving 4)
+10870	10915	3+10 (Regrasp)	New	Pinch with 1-3 while extracting 4
+10915	10955	C P M W A	In taxonomy	Reorienting spoon
+10955	10970	3+10 (Regrasp)	New	Fingers 4-5 moving; finger 2 moving to regrasp; already pinching with 1 and 3
+10970	11005	3+14 (Regrasp)	New	Finger 2 still moving; stabilizing with 1345
+11005	11035	C P M W NA	In taxonomy	Enclosing spoon with hand
+11035	11100	3+10 (Regrasp)	In taxonomy	Stable grasp with palm and4-5; 1-3 prepping for next grasp
+11100	11160	C NP M NW A	In taxonomy	Compliantly touching forks (not sure which category this is, now that I think about it)
+11160	11165	3+8 (Slide)	New	Sliding fork out with index finger
+11210	11240	C P M NW NA (Grasp)	In taxonomy	Removing fork
+11240	11255	C P M W A	In taxonomy	Replace index finger with middle finger
+11255	11290	3+14 (Regrasp)	New	Move fork farther into hand
+11290	11400	C P M W A	In taxonomy	Retracting hand with same grasp
+11400	11435	3+10 (Regrasp)	New	Regrasping
+11435	11460	3+10 (Regrasp)	New	Finger 3 also opening up
+11500	11530	C P M NW NA (Grasp)	In taxonomy	Knife pinched between 1-2 and hand withdrwaing
+11530	11555	3+14 (Regrasp)	New	Middle finger making contact -- new grasp
+11555	11595	C P M W NA	In taxonomy	
+11595	11640	C P M W A	In taxonomy	Rotating knife out
+11640	11690	C P M W A	In taxonomy	Reorienting knife / regrasping...
+11690	11775	C P M W A	In taxonomy	Regrasping
+11775	11800	C P NM NA	In taxonomy	Holding utensils still
+15105	15235	NC M NW	In taxonomy	Movement without shaping
+15260	15270	C NP M NW A	In taxonomy	Pushing Lay's bag in to grasp
+15270	15310	C NP M W NA	In taxonomy	Bag grasped, but contacts still changing
+15310	15420	C P M NW NA (Grasp)	In taxonomy	Stable grasp
+17245	17275	NC M NW	In taxonomy	Moving hand without shaping
+17275	17290	C NP M W A	In taxonomy	Compliantly touching pizza box (thumb sliding, index going into gap between boxes)
+17290	17315	C NP M NW NA	In taxonomy	Pushing box with index finger
+17315	17330	C NP M W NA	In taxonomy	Lifting box by curling index finger
+17330	17345	3+12 (Regrasp)	New	Moving 3-5 to contact
+17345	17360	3+8 (Slide)	New	Lifting box mostly with wrist motion
+17400	17440	3+4 (Regrasp)	New	Preshaping with 1-2; 3-5 still
+17440	17480	C NP M W A	In taxonomy	Grasping
+17480	17550	C P M NW NA (Grasp)	In taxonomy	Stable grasp formed
