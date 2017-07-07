@@ -13,26 +13,26 @@ def plot_transitions(events,bottom,start_time,end_time):
         ax.add_patch(rect)
 
 def plot_screenshots(bottom,start_time,end_time):
-    step = fig_max_x / 14
+    step = fig_max_x / 12
     count = 0
-    img_width=80
-    img_gap=5
+    img_width=75
+    img_gap=0
     for x in np.arange(0,fig_max_x,step):
         time = start_time + (end_time-start_time)*x/fig_max_x
         print 'plotting @ time: ' + str(time)
         screenshot_filename = take_screenshot(time)
         arr_img=plot.imread(screenshot_filename, format='png')
-        imagebox = OffsetImage(arr_img, zoom=0.2)
+        imagebox = OffsetImage(arr_img, zoom=.6)
         imagebox.image.axes = ax
 
-        offx=count*img_width+count*img_gap
-        offy=graph_height*4+graph_gap*4
+        offx=img_width/2 + count*img_width+count*img_gap
+        offy=graph_height*4+graph_gap*4 + img_width/1.78
 
 	ab = AnnotationBbox(imagebox, [offx,offy],
 	    xybox=(0., 0.),
 	    xycoords='data',
 	    boxcoords="offset points",
-	    pad=0.5,
+	    pad=0,
 	    arrowprops=dict(
 		arrowstyle="->",
 		connectionstyle="angle,angleA=0,angleB=90,rad=3")
@@ -74,10 +74,10 @@ def plot_data(filename, annot_colors_, bottom, start_time, end_time):
 def make_plot(start_time,end_time,event_name):
     plot_screenshots(graph_height*4+graph_gap*4, start_time / 29.97, end_time / 29.97)
 
-    plot.text(-100, graph_height*0+graph_gap*0+15, "Miscellaneous")
-    plot.text(-100, graph_height*1+graph_gap*1+15, "BMD")
-    plot.text(-100, graph_height*2+graph_gap*2+15, "Pose")
-    plot.text(-100, graph_height*3+graph_gap*3+15, "Intrinsic manip.")
+    plot.text(-105, graph_height*0+graph_gap*0+15, "Miscellaneous")
+    plot.text(-105, graph_height*1+graph_gap*1+15, "BMD")
+    plot.text(-105, graph_height*2+graph_gap*2+15, "Pose")
+    plot.text(-105, graph_height*3+graph_gap*3+15, "Intrinsic\nmanipulation")
 
     plot_data(misc_filename, annot_colors,graph_height*0+graph_gap*0,start_time,end_time)
     plot_data(bmd_filename, annot_colors,graph_height*1+graph_gap*1,start_time,end_time)
@@ -88,17 +88,18 @@ def make_plot(start_time,end_time,event_name):
 
     plot.show()
 
-fig = plot.figure(figsize=(11, 4))
+fig = plot.figure(figsize=(11, 3.5))
 fig_max_x = 900
-fig_max_y = 800
+fig_max_y = 500
 graph_height = .05*fig_max_y
-graph_gap = .1*fig_max_y
+graph_gap = .14*fig_max_y
 #ax = fig.add_axes([0, 0, 1, 1],xticks=[0,fig_max_x],yticks=[0,fig_max_y])
 xlabels = ['%i' % i for i in range(0,fig_max_x,30)]
-ax = fig.add_axes([0, .1, 1, .9],xticks=range(0, fig_max_x, 30), yticks=[0,fig_max_y])
+ax = fig.add_axes([0, .2, 1, .7],xticks=range(0, fig_max_x, 30), yticks=[0,fig_max_y])
 ax.set_xticklabels(xlabels,rotation=40)
 ax.set_aspect(.5)
 ax.yaxis.set_visible(False)
+ax.set_xlabel("Time (frames)")
 #ax.grid(True, which='both')
 
 ##plot all data
