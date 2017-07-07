@@ -2,12 +2,14 @@ import matplotlib.pyplot as plot
 import numpy as np
 from hhm_io import *
 import matplotlib.image as image
+from matplotlib.offsetbox import (TextArea, DrawingArea, OffsetImage,
+                                  AnnotationBbox)
 
 annot_colors = {'In taxonomy': '#999999', 'New': '#99ff99'}
 
 def plot_transitions(events,bottom,start_time,end_time):
     for event_name,event_time in zip(events.keys(),events.values()):
-        rect = plot.Rectangle( ((event_time[0])/(end_time-start_time),bottom),3/(end_time-start_time),graph_height*3+graph_gap*3,fc='#000000',alpha=0.2,linewidth=0)
+        rect = plot.Rectangle( ((event_time[0])/(end_time-start_time),bottom),3/(end_time-start_time),graph_height*4+graph_gap*3,fc='#000000',alpha=0.2,linewidth=0)
         ax.add_patch(rect)
 
 def plot_screenshots(bottom,start_time,end_time):
@@ -17,14 +19,31 @@ def plot_screenshots(bottom,start_time,end_time):
     img_gap=5
     for x in np.arange(0,fig_max_x,step):
         time = start_time + (end_time-start_time)*x/fig_max_x
-        #print time
+        print 'plotting @ time: ' + str(time)
         screenshot_filename = take_screenshot(time)
-        img=imread(screenshot_filename)
-        imgplot = image.FigureImage(ax,offsetx=count*img_width+count*img_gap,offsety=graph_height*3+graph_gap*3)
-        imgplot.set_data(img)
+        arr_img=plot.imread(screenshot_filename, format='png')
+        imagebox = OffsetImage(arr_img, zoom=0.2)
+        imagebox.image.axes = ax
+
+        offx=count*img_width+count*img_gap
+        offy=graph_height*4+graph_gap*4
+
+	ab = AnnotationBbox(imagebox, [offx,offy],
+	    xybox=(0., 0.),
+	    xycoords='data',
+	    boxcoords="offset points",
+	    pad=0.5,
+	    arrowprops=dict(
+		arrowstyle="->",
+		connectionstyle="angle,angleA=0,angleB=90,rad=3")
+	    )
+
+        print 'plotting image '+screenshot_filename+' at ('+str(offx)+','+str(offy)+')'
+        #imgplot = image.FigureImage(ax,offsetx=offx,offsety=offy)
+        #imgplot.set_data(img)
         #for event_name,event_time in zip(events.keys(),events.values()):
         #rect = plot.Point2d(img)
-        ax.add_artist(imgplot)
+        ax.add_artist(ab)
         count = count+1
 
 def plot_data(filename, annot_colors_, bottom, start_time, end_time):
@@ -52,8 +71,8 @@ def plot_data(filename, annot_colors_, bottom, start_time, end_time):
 #            rect = plot.Rectangle( ((event_end)/(end_time-start_time),bottom),1/(end_time-start_time),graph_height*1.1,fc='#ff0000',linewidth=0)
 #            ax.add_patch(rect)
 
-def make_plot():
-    plot_screenshots(graph_height*3+graph_gap*3, start_time / 29.97, end_time / 29.97)
+def make_plot(start_time,end_time,event_name):
+    plot_screenshots(graph_height*4+graph_gap*4, start_time / 29.97, end_time / 29.97)
 
     plot.text(-100, graph_height*0+graph_gap*0+15, "Miscellaneous")
     plot.text(-100, graph_height*1+graph_gap*1+15, "BMD")
@@ -75,8 +94,11 @@ fig_max_y = 800
 graph_height = .05*fig_max_y
 graph_gap = .1*fig_max_y
 #ax = fig.add_axes([0, 0, 1, 1],xticks=[0,fig_max_x],yticks=[0,fig_max_y])
+xlabels = ['%i' % i for i in range(0,fig_max_x,30)]
 ax = fig.add_axes([0, .1, 1, .9],xticks=range(0, fig_max_x, 30), yticks=[0,fig_max_y])
+ax.set_xticklabels(xlabels,rotation=40)
 ax.set_aspect(.5)
+ax.yaxis.set_visible(False)
 #ax.grid(True, which='both')
 
 ##plot all data
