@@ -13,6 +13,7 @@ def plot_transitions(events,bottom,start_time,end_time):
         ax.add_patch(rect)
 
 def plot_screenshots(bottom,start_time,end_time):
+    fig_max_x = (end_time - start_time) * 29.97
     step = fig_max_x / 12
     count = 0
     img_width=75
@@ -22,17 +23,21 @@ def plot_screenshots(bottom,start_time,end_time):
         print 'plotting @ time: ' + str(time)
         screenshot_filename = take_screenshot(time)
         arr_img=plot.imread(screenshot_filename, format='png')
-        imagebox = OffsetImage(arr_img, zoom=.6)
+        imagebox = OffsetImage(arr_img, zoom=.72)
         imagebox.image.axes = ax
 
-        offx=img_width/2 + count*img_width+count*img_gap
+        offx= count*step+count*img_gap
         offy=graph_height*4+graph_gap*4 + img_width/1.78
 
 	ab = AnnotationBbox(imagebox, [offx,offy],
-	    xybox=(0., 0.),
+	    #xybox=(0., 0.),
+            xybox = (offx, offy),
 	    xycoords='data',
-	    boxcoords="offset points",
+	    #boxcoords="offset points",
+            boxcoords = 'data',
+            box_alignment = (0., .5),
 	    pad=0,
+            frameon=False,
 	    arrowprops=dict(
 		arrowstyle="->",
 		connectionstyle="angle,angleA=0,angleB=90,rad=3")
@@ -52,16 +57,16 @@ def plot_data(filename, annot_colors_, bottom, start_time, end_time):
     for i in range(num_annots):
       color = annot_colors_[str(status[i])]
 
-      left = (starts[i] - start_time) / (end_time-start_time)*fig_max_x
+      left = starts[i] - start_time
       height = graph_height
-      width = max(.005, (ends[i]-starts[i])/(end_time-start_time))*fig_max_x
+      width = max(.005, (ends[i] - starts[i]))
       rect = plot.Rectangle( (left, bottom), width, height, fc=color, linewidth=1, edgecolor="#000000")
       ax.add_patch(rect)
       if (i % 2 == 1):
         ax.text(left, bottom+height+36, str(annots[i]), fontsize=8)   # Print label
       else:
         ax.text(left, bottom+height+12, str(annots[i]), fontsize=8)   # Print label
-      #print left, bottom, height, width, annot_colors_[str(annots[i])]
+      #print left, bottom, height, width, str(annots[i])
 
 #def plot_transitions(bottom,start_time,end_time):
 #    for event_start,event_end in zip(event_starts,event_ends):
@@ -72,12 +77,19 @@ def plot_data(filename, annot_colors_, bottom, start_time, end_time):
 #            ax.add_patch(rect)
 
 def make_plot(start_time,end_time,event_name):
+
+    length = int(round(end_time - start_time))
+    xlabels = ['%i' % i for i in range(0, length, 30)]
+    ax.set_xticks(range(0, length, 30))
+    ax.set_xlim([0, length])
+    ax.set_yticks([0,fig_max_y])
+
     plot_screenshots(graph_height*4+graph_gap*4, start_time / 29.97, end_time / 29.97)
 
-    plot.text(-105, graph_height*0+graph_gap*0+15, "Miscellaneous")
-    plot.text(-105, graph_height*1+graph_gap*1+15, "BMD")
-    plot.text(-105, graph_height*2+graph_gap*2+15, "Pose")
-    plot.text(-105, graph_height*3+graph_gap*3+15, "Intrinsic\nmanipulation")
+    plot.text(-20, graph_height*0+graph_gap*0+15, "Miscellaneous")
+    plot.text(-20, graph_height*1+graph_gap*1+15, "BMD")
+    plot.text(-20, graph_height*2+graph_gap*2+15, "Pose")
+    plot.text(-20, graph_height*3+graph_gap*3+15, "Intrinsic\nmanipulation")
 
     plot_data(misc_filename, annot_colors,graph_height*0+graph_gap*0,start_time,end_time)
     plot_data(bmd_filename, annot_colors,graph_height*1+graph_gap*1,start_time,end_time)
@@ -86,18 +98,19 @@ def make_plot(start_time,end_time,event_name):
 
     plot.suptitle(event_name+" timeline")
 
-    plot.show()
+    #plot.show()
 
 fig = plot.figure(figsize=(11, 3.5))
-fig_max_x = 900
+#fig_max_x = 900
 fig_max_y = 500
 graph_height = .05*fig_max_y
 graph_gap = .14*fig_max_y
 #ax = fig.add_axes([0, 0, 1, 1],xticks=[0,fig_max_x],yticks=[0,fig_max_y])
-xlabels = ['%i' % i for i in range(0,fig_max_x,30)]
-ax = fig.add_axes([0, .2, 1, .7],xticks=range(0, fig_max_x, 30), yticks=[0,fig_max_y])
-ax.set_xticklabels(xlabels,rotation=40)
-ax.set_aspect(.5)
+#xlabels = ['%i' % i for i in range(0,fig_max_x,30)]
+#ax = fig.add_axes([0, .2, 1, .7],xticks=range(0, fig_max_x, 30), yticks=[0,fig_max_y])
+ax = fig.add_axes([.12, .15, .87, .74])
+#ax.set_xticklabels(xlabels,rotation=40)
+#ax.set_aspect(.5)
 ax.yaxis.set_visible(False)
 ax.set_xlabel("Time (frames)")
 #ax.grid(True, which='both')
