@@ -86,10 +86,11 @@ def make_plot(start_time,end_time,event_name):
 
     plot_screenshots(graph_height*4+graph_gap*4, start_time / 29.97, end_time / 29.97)
 
-    plot.text(-20, graph_height*0+graph_gap*0+15, "Miscellaneous")
-    plot.text(-20, graph_height*1+graph_gap*1+15, "BMD")
-    plot.text(-20, graph_height*2+graph_gap*2+15, "Pose")
-    plot.text(-20, graph_height*3+graph_gap*3+15, "Intrinsic\nmanipulation")
+    ylabel_offset = -.126 * length
+    plot.text(ylabel_offset, graph_height*0+graph_gap*0+15, "Miscellaneous")
+    plot.text(ylabel_offset, graph_height*1+graph_gap*1+15, "BMD")
+    plot.text(ylabel_offset, graph_height*2+graph_gap*2+15, "Pose")
+    plot.text(ylabel_offset, graph_height*3+graph_gap*3+15, "Intrinsic\nmanipulation")
 
     plot_data(misc_filename, annot_colors,graph_height*0+graph_gap*0,start_time,end_time)
     plot_data(bmd_filename, annot_colors,graph_height*1+graph_gap*1,start_time,end_time)

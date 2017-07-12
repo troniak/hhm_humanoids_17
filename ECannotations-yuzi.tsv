@@ -1,10 +1,12 @@
 Start frame	End frame	Category	Status	Comments
 450	480	Full roll	In taxonomy	Zone pick?
-540	600	Rock	In taxonomy	
+550	572	Rock	In taxonomy	
 840	870	Full roll	In taxonomy	Zone place
 7590	7650	Rock	In taxonomy	Pepsi cup pick
-10770	11040	Interdigital step	In taxonomy	Cutlery pick
-11265	11430	Palmar slide	In taxonomy	
+10770	11004	Interdigital step	In taxonomy	Cutlery pick
+11006	11040	Interdigital step	In taxonomy	
+11265	11404	Palmar slide	In taxonomy
+11406	11430	Palmar slide	In taxonomy	
 11550	11625	Interdigital step	In taxonomy	
 11610	11775	Linear step	In taxonomy	
 11625	11790	Palmar slide	In taxonomy	
